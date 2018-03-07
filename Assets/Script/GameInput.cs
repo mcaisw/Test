@@ -28,6 +28,11 @@ public class GameInput : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (GameManager.Instance.Failed)
+        {
+            return;
+        }
+
 
         if (Input.GetMouseButtonDown(0)&& responseMouseDown)
         {

@@ -49,6 +49,7 @@
      <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
      <Compile Include="Assets\Script\CameraMove.cs" />
      <Compile Include="Assets\Script\GameInput.cs" />
+     <Compile Include="Assets\Script\GameManager.cs" />
      <Compile Include="Assets\Script\Map.cs" />
      <Compile Include="Assets\Script\MapManager.cs" />
      <Compile Include="Assets\Script\Player.cs" />
@@ -86,20 +87,20 @@
  <Reference Include="DemiLib">
  <HintPath>C:/Users/ME/Documents/GitHub/Test/Assets/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
  </Reference>
+ <Reference Include="DOTween">
+ <HintPath>C:/Users/ME/Documents/GitHub/Test/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
+ </Reference>
  <Reference Include="DOTween43">
  <HintPath>C:/Users/ME/Documents/GitHub/Test/Assets/Demigiant/DOTween/DOTween43.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween46">
+ <HintPath>C:/Users/ME/Documents/GitHub/Test/Assets/Demigiant/DOTween/DOTween46.dll</HintPath>
  </Reference>
  <Reference Include="DOTween50">
  <HintPath>C:/Users/ME/Documents/GitHub/Test/Assets/Demigiant/DOTween/DOTween50.dll</HintPath>
  </Reference>
- <Reference Include="DOTween">
- <HintPath>C:/Users/ME/Documents/GitHub/Test/Assets/Demigiant/DOTween/DOTween.dll</HintPath>
- </Reference>
  <Reference Include="DOTweenPro">
  <HintPath>C:/Users/ME/Documents/GitHub/Test/Assets/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
- </Reference>
- <Reference Include="DOTween46">
- <HintPath>C:/Users/ME/Documents/GitHub/Test/Assets/Demigiant/DOTween/DOTween46.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -26,4 +26,15 @@ public class Player : MonoBehaviour {
             GameInput.Instance.PlayerCanJump();
         });
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag=="red")
+        {
+            Debug.Log("失败");
+            GameManager.Instance.CallFailedUi();
+        }
+    }
+
+
 }

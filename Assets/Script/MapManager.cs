@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class MapManager : MonoBehaviour {
 
     public GameObject whiteMap;
@@ -10,15 +11,19 @@ public class MapManager : MonoBehaviour {
 	private Vector2 startPos;
 	private Vector2 offSetPos;
 	private Vector2 nextPos;
-	//map 容器
-	List<Map> mapList;
+
+    public static MapManager Instance;
+    //map 容器
+    List<Map> mapList;
     // Use this for initialization
     void Start () {
 		startPos = new Vector2 (-3,-3);
 		nextPos = startPos;
 		offSetPos = new Vector2 (1,1);
 		mapList = new List<Map> ();
-	}
+        Instance = this;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -30,26 +35,18 @@ public class MapManager : MonoBehaviour {
 
     void CreatMap() {
         Debug.Log("生成map");
-		InstantiateMap (0,GetNextPos());
+		InstantiateMap (whiteMap, GetNextPos());
     }
 
-    void DestroyMap() {
-        Debug.Log("销毁map");
-    }
 
-    private void InstantiateMap(int mapType,Vector2 pos)
+    private void InstantiateMap(GameObject map, Vector2 pos)
     {
-        if (mapType==0)
-        {
-			GameObject newMap = Instantiate (whiteMap,this.transform);
-			newMap.transform.position = pos;
-			mapList.Add (newMap.GetComponent<Map>());
-			AddPos(ref nextPos);
-        }
-        else
-        {
-
-        }
+        
+		GameObject newMap = Instantiate (map, this.transform);
+		newMap.transform.position = pos;
+		mapList.Add (newMap.GetComponent<Map>());
+		AddPos(ref nextPos);
+       
     }
 
     Vector2 GetNextPos() {
@@ -59,4 +56,15 @@ public class MapManager : MonoBehaviour {
 	void AddPos(ref Vector2 currentPos){
 		currentPos += offSetPos;
 	}
+
+    bool OutOffScreen() {
+        return true;
+    }
+
+    public void RemoveTheMap(Map map) {
+        mapList.Remove(map);
+    }
+
+    
+
 }
