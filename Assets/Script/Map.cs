@@ -13,4 +13,10 @@ public class Map : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	public Vector2 GetPos(){
+		return new Vector2(this.transform.position.x,this.transform.position.y);
+	}
+
+
 }

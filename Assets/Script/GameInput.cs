@@ -19,30 +19,30 @@ public class GameInput : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetMouseButtonDown(0)&& gapTime>0) {
-            tapTimes++;
-            countTimes = true;
-        }
-        
-        if (countTimes&&gapTime > 0)
-        {
-            gapTime -= Time.deltaTime;
-        }
-
-        if (gapTime<=0)
-        {
-            countTimes = false;
-        }
+//        if (Input.GetMouseButtonDown(0)&& gapTime>0) {
+//            tapTimes++;
+//            countTimes = true;
+//        }
+//        
+//        if (countTimes&&gapTime > 0)
+//        {
+//            gapTime -= Time.deltaTime;
+//        }
+//
+//        if (gapTime<=0)
+//        {
+//            countTimes = false;
+//        }
 
     }
 
     private void LateUpdate()
     {
-        if (gapTime<=0)
-        {
-            Debug.Log(tapTimes);
-            tapTimes = 0;
-            gapTime = 0.3f;
-        }
+//        if (gapTime<=0)
+//        {
+//            Debug.Log(tapTimes);
+//            tapTimes = 0;
+//            gapTime = 0.3f;
+//        }
     }
 }
