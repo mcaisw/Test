@@ -78,6 +78,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\GameInput.cs" />
+    <Compile Include="Assets\Script\Map.cs" />
+    <Compile Include="Assets\Script\MapManager.cs" />
+    <Compile Include="Assets\Script\Player.cs" />
     <Compile Include="Assets\Script\ReadArrayFromJson.cs" />
   </ItemGroup>
   <ItemGroup>
