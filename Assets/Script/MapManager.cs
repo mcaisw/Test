@@ -44,7 +44,7 @@ public class MapManager : MonoBehaviour {
 			GameObject newMap = Instantiate (whiteMap,this.transform);
 			newMap.transform.position = pos;
 			mapList.Add (newMap.GetComponent<Map>());
-			AddPos (ref nextPos);
+			AddPos(ref nextPos);
         }
         else
         {

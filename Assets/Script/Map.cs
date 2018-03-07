@@ -18,5 +18,5 @@ public class Map : MonoBehaviour {
 		return new Vector2(this.transform.position.x,this.transform.position.y);
 	}
 
-
+    
 }

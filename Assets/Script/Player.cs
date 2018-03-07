@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Player : MonoBehaviour {
     public static Player Instance;
@@ -19,7 +20,10 @@ public class Player : MonoBehaviour {
 		
 	}
 
-    public void Jump() {
+    public void Jump(Vector3 endValue,float jumpPower,int numJumps,float duration,bool snapping) {
         Debug.Log("player jump");
+        transform.DOJump(endValue,jumpPower,numJumps,duration,snapping).OnComplete(()=> {
+            GameInput.Instance.PlayerCanJump();
+        });
     }
 }

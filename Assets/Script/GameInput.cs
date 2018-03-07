@@ -11,38 +11,37 @@ public class GameInput : MonoBehaviour {
     bool    countTimes;
     bool    quickClick;
 
+    float   jumpPower=1;
+    int     numJumps=1;
+    float   duration = 0.3f;
+    bool    snapping=false;
+
+    bool responseMouseDown;
     // Use this for initialization
+
+    public static GameInput Instance;
     void Start () {
         quickClick = true;
+        responseMouseDown = true;
+        Instance = this;
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-//        if (Input.GetMouseButtonDown(0)&& gapTime>0) {
-//            tapTimes++;
-//            countTimes = true;
-//        }
-//        
-//        if (countTimes&&gapTime > 0)
-//        {
-//            gapTime -= Time.deltaTime;
-//        }
-//
-//        if (gapTime<=0)
-//        {
-//            countTimes = false;
-//        }
-
+        if (Input.GetMouseButtonDown(0)&& responseMouseDown)
+        {
+            responseMouseDown = false;
+            Player.Instance.Jump(GetNextJumpPos(), jumpPower, numJumps, duration, snapping);
+        }
     }
 
-    private void LateUpdate()
-    {
-//        if (gapTime<=0)
-//        {
-//            Debug.Log(tapTimes);
-//            tapTimes = 0;
-//            gapTime = 0.3f;
-//        }
+    public Vector3 GetNextJumpPos() {
+        return Player.Instance.transform.position + new Vector3(1,1,0);
+    }
+
+
+    public void PlayerCanJump() {
+        responseMouseDown = true;
     }
 }
