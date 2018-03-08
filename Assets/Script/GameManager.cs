@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public GameObject Canvas;
-
+    public float gameTime;
 
 
 
@@ -18,26 +18,32 @@ public class GameManager : MonoBehaviour {
         set { failed = value; }
     }
 
-	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
+        Screen.SetResolution(480, 854, false);
+    }
+
+    // Use this for initialization
+    void Start () {
         Instance = this;
         Canvas.SetActive(false);
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        gameTime += Time.deltaTime;
+    }
 
     public void OnceAgain()
     {
-        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
         Failed = false;
     }
 
     public void CallFailedUi() {
         Canvas.SetActive(true);
         failed= true;
+        gameTime = 0;
     }
 
 }

@@ -12,7 +12,6 @@ public class CameraMove : MonoBehaviour {
 	void Start () {
         direction = new Vector2(1,1);
         speed = 1;
-
         Instance = this;
     }
 	
@@ -22,7 +21,7 @@ public class CameraMove : MonoBehaviour {
         {
             return;
         }
-        MoveForward(direction,speed);
+        MoveForward(direction,speed* (1+Mathf.Sqrt( GameManager.Instance.gameTime/10)));
     }
 
     void MoveForward(Vector3 dir,float speed) {

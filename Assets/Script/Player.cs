@@ -6,6 +6,12 @@ using DG.Tweening;
 public class Player : MonoBehaviour {
     public static Player Instance;
 
+    public float    jumpPower = 1;
+    public int      numJumps = 1;
+    public float    duration = 0.3f;
+    public bool     snapping = false;
+
+
     private void Awake()
     {
         Instance = this;
@@ -28,7 +34,10 @@ public class Player : MonoBehaviour {
 	}
 
     public void Jump(Vector3 endValue,float jumpPower,int numJumps,float duration,bool snapping) {
-        Debug.Log("player jump");
+        //Debug.Log("player jump");
+        transform.DOScaleY(0.5f,0.2f).OnComplete(()=> {
+            transform.DOScaleY(1f, 0.2f);
+        });
         transform.DOJump(endValue,jumpPower,numJumps,duration,snapping).OnComplete(()=> {
             GameInput.Instance.PlayerCanJump();
         });
@@ -38,7 +47,7 @@ public class Player : MonoBehaviour {
     {
         if (collision.tag=="red")
         {
-            Debug.Log("失败");
+            //Debug.Log("失败");
             GameManager.Instance.CallFailedUi();
         }
     }

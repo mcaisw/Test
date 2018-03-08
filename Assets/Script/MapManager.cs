@@ -29,7 +29,7 @@ public class MapManager : MonoBehaviour {
 		mapList = new List<Map> ();
         Instance = this;
 
-        string json = File.ReadAllText(Application.dataPath + "/MapData/map.json");
+        string json = File.ReadAllText(Application.dataPath + "/StreamingAssets/MapData/map.json");
         array = JsonHelper.getJsonArray<int>(json);
     }
 	
@@ -42,12 +42,14 @@ public class MapManager : MonoBehaviour {
 	}
 
     void CreatMap() {
+
+        //InstantiateMap(whiteMap, GetNextPos());
         if (array[currentIndex] == 0)
             InstantiateMap(whiteMap, GetNextPos());
         else InstantiateMap(redMap, GetNextPos());
 
         currentIndex++;
-        if (currentIndex>=array.Length)
+        if (currentIndex >= array.Length)
         {
             currentIndex = 0;
         }
