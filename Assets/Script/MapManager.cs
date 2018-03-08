@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 
 public class MapManager : MonoBehaviour {
@@ -15,6 +16,9 @@ public class MapManager : MonoBehaviour {
     public static MapManager Instance;
     //map 容器
     List<Map> mapList;
+    int[] array;
+    int currentIndex;
+
     // Use this for initialization
     void Start () {
 		startPos = new Vector2 (-3,-3);
@@ -23,6 +27,8 @@ public class MapManager : MonoBehaviour {
 		mapList = new List<Map> ();
         Instance = this;
 
+        string json = File.ReadAllText(Application.dataPath + "/MapData/map.json");
+        array = JsonHelper.getJsonArray<int>(json);
     }
 	
 	// Update is called once per frame
@@ -35,7 +41,14 @@ public class MapManager : MonoBehaviour {
 
     void CreatMap() {
         Debug.Log("生成map");
-		InstantiateMap (whiteMap, GetNextPos());
+        InstantiateMap(whiteMap, GetNextPos());
+
+        //  if (array[currentIndex]==0)
+        //InstantiateMap (whiteMap, GetNextPos());
+        //  else InstantiateMap(redMap, GetNextPos());
+
+        //  currentIndex++;
+
     }
 
 

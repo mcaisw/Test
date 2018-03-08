@@ -18,7 +18,8 @@ public class Map : MonoBehaviour {
 		return new Vector2(this.transform.position.x,this.transform.position.y);
 	}
 
-    public void OnBecameInvisible() {
+    public void OnBecameInvisible()
+    {
         Destroy(this.gameObject);
         MapManager.Instance.RemoveTheMap(this);
     }
