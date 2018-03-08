@@ -16,6 +16,8 @@ public class MapManager : MonoBehaviour {
     public static MapManager Instance;
     //map 容器
     List<Map> mapList;
+
+    //map表
     int[] array;
     int currentIndex;
 
@@ -33,22 +35,22 @@ public class MapManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (mapList.Count<10)
+		if (mapList.Count<20)
         {
             CreatMap();
         }
 	}
 
     void CreatMap() {
-        Debug.Log("生成map");
-        InstantiateMap(whiteMap, GetNextPos());
+        if (array[currentIndex] == 0)
+            InstantiateMap(whiteMap, GetNextPos());
+        else InstantiateMap(redMap, GetNextPos());
 
-        //  if (array[currentIndex]==0)
-        //InstantiateMap (whiteMap, GetNextPos());
-        //  else InstantiateMap(redMap, GetNextPos());
-
-        //  currentIndex++;
-
+        currentIndex++;
+        if (currentIndex>=array.Length)
+        {
+            currentIndex = 0;
+        }
     }
 
 
@@ -70,9 +72,6 @@ public class MapManager : MonoBehaviour {
 		currentPos += offSetPos;
 	}
 
-    bool OutOffScreen() {
-        return true;
-    }
 
     public void RemoveTheMap(Map map) {
         mapList.Remove(map);

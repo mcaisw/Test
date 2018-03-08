@@ -17,7 +17,14 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (GameManager.Instance.Failed)
+        {
+            return;
+        }
+        if (DistanceToCamera_X()>3)
+        {
+            GameManager.Instance.CallFailedUi();
+        }
 	}
 
     public void Jump(Vector3 endValue,float jumpPower,int numJumps,float duration,bool snapping) {
@@ -27,14 +34,17 @@ public class Player : MonoBehaviour {
         });
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.tag=="red")
+        if (collision.tag=="red")
         {
             Debug.Log("失败");
             GameManager.Instance.CallFailedUi();
         }
     }
 
+    float DistanceToCamera_X() {
+        return  CameraMove.Instance.transform.position.x- transform.position.x;
+    }
 
 }
